@@ -7,6 +7,10 @@ function *sayHello() {
     yield 'world';
 }
 
-for(let x of sayHello()) {
+for (let x of sayHello()) {
     console.log(x);
 }
+
+fetch('/api')
+    .then(response=>response.json())
+    .then(json=>console.log(json));

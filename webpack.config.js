@@ -25,6 +25,12 @@ module.exports = {
     },
     devtool: '#inline-source-map',
     devServer: {
-        contentBase: './src'
+        contentBase: './src',
+        proxy: {
+            '/api*': {
+                target: 'http://localhost:3000',
+                secure: false
+            }
+        }
     }
 };
