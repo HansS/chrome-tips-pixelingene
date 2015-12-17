@@ -1,16 +1,42 @@
-var React = require('react');
+require('./main.scss');
 
-(()=>console.log('logging via es6'))();
+import React from 'react';
+import ReactDom from 'react-dom';
+import Person from './components/person.jsx';
 
-function *sayHello() {
-    yield 'hello';
-    yield 'world';
+class PersonList extends React.Component {
+
+    constructor() {
+        super();
+        this.state = {
+            people: []
+        };
+    }
+
+    render() {
+        var elements = this.state.people.map((p)=> {
+            let name = `${p.firstName}, ${p.lastName}`;
+            return (
+                <Person key={p.id} name={name}>
+                </Person>
+            );
+        });
+
+        return (
+            <div className="person-list">
+                {elements}
+            </div>
+        );
+    }
+
+    componentDidMount() {
+        fetch('/api/people')
+            .then(response=>response.json())
+            .then(json=> {
+                this.setState({people: json});
+            })
+            .catch(ex=>console.log(ex));
+    }
 }
 
-for (let x of sayHello()) {
-    console.log(x);
-}
-
-fetch('/api')
-    .then(response=>response.json())
-    .then(json=>console.log(json));
+ReactDom.render(<PersonList />, document.querySelector('.people'));
