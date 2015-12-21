@@ -1,0 +1,17 @@
+.u-m {
+    margin: 1rem;
+}
+@each $p,$prop in (l:left, r:right, t:top, b:bottom) {
+    .u-m-#{$p} {
+        margin-#{$prop}: 1rem;
+    }
+}
+
+.u-p {
+    padding: 1rem;
+}
+@each $p,$prop in (l:left, r:right, t:top, b:bottom) {
+    .u-p-#{$p} {
+        padding-#{$prop}: 1rem;
+    }
+}

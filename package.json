@@ -23,12 +23,14 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --inline",
-    "start": "nodemon server/app.js --watch server"
+    "start": "nodemon server/app.js --watch ./server"
   },
   "dependencies": {
     "babel-polyfill": "^6.3.14",
+    "jquery": "^2.1.4",
     "lodash": "^3.10.1",
     "react": "^0.14.3",
+    "react-d3": "^0.4.0",
     "react-dom": "^0.14.3"
   }
 }

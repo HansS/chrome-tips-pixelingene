@@ -8,7 +8,7 @@ module.exports = {
     ],
     output: {
         path: path.resolve(__dirname, '../build'),
-        publicPath: '/build/',
+        publicPath: 'build/',
         filename: 'bundle.js'
     },
     module: {
@@ -26,15 +26,15 @@ module.exports = {
                 loaders: ["style", "css?sourceMap", "sass?sourceMap"]
             },
             {
-                test: /\.woff(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                test: /\.woff$/,
                 loader: "url-loader?limit=10000&mimetype=application/font-woff"
             },
             {
-                test: /\.woff2(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                test: /\.woff2$/,
                 loader: "url-loader?limit=10000&mimetype=application/font-woff2"
             },
             {
-                test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                test: /\.(ttf|eot|svg)$/,
                 loader: "file-loader"
             }
         ]

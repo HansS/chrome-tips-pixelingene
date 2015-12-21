@@ -8,14 +8,15 @@ module.exports = {
 };
 
 var skills = ['js', 'css', 'design', 'pm', 'ia'],
-    levels = ['Junior', 'Senior', 'Manager', 'Director', 'VP'];
+    levels = ['Junior', 'Senior', 'Manager', 'Director', 'VP'],
+    cities = ['Boston', 'New York', 'Atlanta', 'San Francisco', 'Chicago', 'Houston', 'Denver', 'Washington D.C.'];
 
 function generatePerson() {
     return {
         id: faker.random.uuid(),
         firstName: faker.name.firstName(),
         lastName: faker.name.lastName(),
-        location: faker.address.city(),
+        location: faker.random.arrayElement(cities),
         joinDate: faker.date.past(),
         bio: faker.lorem.sentence(),
         contact: {
@@ -28,7 +29,7 @@ function generatePerson() {
             css: faker.random.number() % 10,
             design: faker.random.number() % 10,
             pm: faker.random.number() % 10,
-            ia: faker.random.number() % 10,
+            ia: faker.random.number() % 10
         }
     };
 
@@ -41,7 +42,7 @@ function generateProject() {
         pid: String(faker.random.number() % 100000),
         startDate: faker.date.recent(),
         endDate: faker.date.future(),
-        location: faker.address.city(),
+        location: faker.random.arrayElement(cities),
         roles: _.times(5, ()=> {
             return {
                 level: faker.random.arrayElement(levels),
