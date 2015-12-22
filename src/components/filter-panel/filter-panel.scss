@@ -1,7 +1,7 @@
 .filter-panel {
     position: fixed;
     left: 0;
-    top: 0;
+    top: 6rem;
     bottom: 0;
     width: 300px;
 
@@ -15,9 +15,9 @@
 
 .filter-panel__button {
     position: fixed;
-    z-index: 100;
-    left: 1rem;
-    top: 1rem;
+    z-index: 2000;
+    left: 10rem;
+    top: 0.9rem;
 }
 
 .slide-enter {

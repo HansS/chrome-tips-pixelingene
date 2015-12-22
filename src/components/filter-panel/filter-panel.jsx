@@ -10,13 +10,21 @@ export default class FilterPanel extends React.Component {
         super();
         this.state = {
             panelVisible: false,
-            filter: {}
+            filter: null
         };
     }
 
     componentWillReceiveProps(nextProps) {
-        var filter = this._extractFilters(nextProps.people || []);
-        this.setState({filter: filter});
+        if (!this.state.filter) {
+            let filter = this._extractFilters(nextProps.people || []);
+            this.setState({filter: filter});
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.props.onApply) {
+            this.props.onApply(this.state);
+        }
     }
 
     render() {
@@ -100,10 +108,14 @@ export default class FilterPanel extends React.Component {
     }
 
     _onFilterListClose(filter) {
-        console.log(filter);
+        if (this.props.onApply) {
+            this.setState({filter: filter});
+            this.props.onApply(filter);
+        }
     }
 };
 
 FilterPanel.defaultProps = {
-    people: []
+    people: [],
+    onApply: function () {}
 };

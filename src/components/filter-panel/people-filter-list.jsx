@@ -13,8 +13,8 @@ export default class PeopleFilterList extends React.Component {
         };
     }
 
-    componentWillReceiveProps(nextProps) {
-        this._buildState(nextProps.filter);
+    componentDidMount() {
+        this._buildState(this.props.filter);
     }
 
     componentWillUnmount() {
@@ -42,7 +42,7 @@ export default class PeopleFilterList extends React.Component {
                 );
             }),
             skills = _.map(filter.skills, (range, skill)=> {
-                var value = state.skills[skill] || {value:5};
+                var value = state.skills[skill] ? state.skills[skill].value : (range.min + range.max) / 2;
                 return (
                     <li key={skill} className="list-group-item" data-value={skill}>
                         <label>{skill.toUpperCase()}</label>
@@ -89,8 +89,8 @@ export default class PeopleFilterList extends React.Component {
         var skill = $(event.target).closest('[data-value]').data('value'),
             rating = parseInt(event.target.value);
 
-        this.state.skills[skill] = rating;
-        this.setState(this.state);
+        this.state.skills[skill].value = rating;
+        this.setState({skills: this.state.skills});
     }
 
     _locationChanged(event) {
@@ -98,7 +98,7 @@ export default class PeopleFilterList extends React.Component {
             selected = event.target.checked;
 
         this.state.location[location] = selected;
-        this.setState(this.state);
+        this.setState({location: this.state.location});
     }
 
     _levelChanged(event) {
@@ -106,24 +106,17 @@ export default class PeopleFilterList extends React.Component {
             selected = event.target.checked;
 
         this.state.level[level] = selected;
-        this.setState(this.state);
+        this.setState({level: this.state.level});
     }
 
 
     _buildState(filter) {
-        this.state.location = _.extend({}, filter.location);
-
-        this.state.level = _.extend({}, filter.level);
-
-        this.state.skills = _.reduce(Object.keys[filter.skills], (agg, x)=>{
-            agg[x] = filter.skills[x].value;
-            return agg;
-        }, {});
+        this.setState(_.cloneDeep(filter));
     }
 
 }
 
 PeopleFilterList.defaultProps = {
     filter: {},
-    onClose: function(){}
+    onClose: function () {}
 };
