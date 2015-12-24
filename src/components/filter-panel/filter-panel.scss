@@ -1,23 +1,16 @@
 .filter-panel {
     position: fixed;
     left: 0;
-    top: 6rem;
+    top: 50px;
     bottom: 0;
     width: 300px;
 
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(255, 255, 255, 0.8);
     box-shadow: 1px 0 5px #ccc;
     z-index: 99;
 
     display: flex;
     flex-direction: column;
-}
-
-.filter-panel__button {
-    position: fixed;
-    z-index: 2000;
-    left: 10rem;
-    top: 0.9rem;
 }
 
 .slide-enter {

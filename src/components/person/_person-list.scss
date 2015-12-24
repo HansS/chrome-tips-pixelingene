@@ -1,0 +1,19 @@
+.person-list-container {
+    padding-top: 100px;
+}
+.person {
+    min-height: 200px;
+    padding: 1rem;
+    background: white;
+    transition: background 0.25s ease-out;
+
+    &:hover {
+        background: lighten(#88c5ff, 10%);
+    }
+}
+
+.progress {
+    height: 5px;
+    border-radius: 0;
+    margin-bottom: 3px;
+}

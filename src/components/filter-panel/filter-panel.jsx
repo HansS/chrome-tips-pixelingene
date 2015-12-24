@@ -32,16 +32,20 @@ export default class FilterPanel extends React.Component {
             ? this._prepareFilterContent()
             : null;
 
-        var filterButton = this.state.panelVisible
-            ? null
-            : (<div className="btn btn-primary filter-panel__button"
-                    onClick={this._togglePanel.bind(this)}>Filter</div>);
-
         return (
             <TransitionGroup transitionName="slide"
                              transitionEnterTimeout={250}
                              transitionLeaveTimeout={250}>
-                {filterButton}
+                <div className="row">
+                    <div className="col-sm-12">
+                        <div className="well">
+                            <div className="btn btn-primary"
+                                 onClick={this._togglePanel.bind(this)}>Filter
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 {content}
             </TransitionGroup>
         );

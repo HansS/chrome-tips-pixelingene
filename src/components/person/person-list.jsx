@@ -1,3 +1,4 @@
+import './_person-list.scss';
 import React from 'react';
 import Person from './person.jsx';
 

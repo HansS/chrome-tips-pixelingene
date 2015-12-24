@@ -15,3 +15,8 @@
         padding-#{$prop}: 1rem;
     }
 }
+
+.u-text-clip {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

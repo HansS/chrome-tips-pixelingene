@@ -22,6 +22,7 @@ export default class Dashboard extends React.Component {
         );
     }
 
+
     componentDidMount() {
         fetch('/api/people')
             .then(response=>response.json())
